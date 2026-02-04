@@ -24,6 +24,9 @@ header {
 
 .gallery img {
   width: 100%;
-  height: auto;
+  height: 40vh;
+  min-height: 250px;
+  max-height: 400px;
   object-fit: cover;
 }
+
