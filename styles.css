@@ -16,18 +16,20 @@ header {
 }
 
 .gallery {
-  column-count: 3;       /* 3 images across the row */
-  column-gap: 1rem;      /* spacing between columns */
+  display: flex;
+  justify-content: center; /* center row */
+  align-items: flex-start; /* align tops of images */
+  gap: 1rem;               /* space between images */
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
 .gallery img {
-  width: 100%;           /* fill the column width */
-  height: auto;          /* keep original aspect ratio */
+  max-height: 500px;  /* scale images to a reasonable height */
+  width: auto;        /* keep natural aspect ratio */
   display: block;
-  margin-bottom: 1rem;   /* spacing between stacked images */
 }
+
 
 
