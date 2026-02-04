@@ -24,7 +24,7 @@ body {
 }
 
 .row img {
-  height: 300px;     /* set all images in the row to same height */
+  height: 500px;     /* set all images in the row to same height */
   width: auto;       /* keep original aspect ratio */
   display: block;
 }

@@ -1,26 +1,199 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Linda Anotida Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linda's Gallery</title>
 
-  <body>
-    <h3>hi, i'm linda and i like taking pictures</h3>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
 
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 60px 20px 30px 20px;
+  background: white;
+}
 
-  <main class="gallery">
-    <div class="row">
-        <img src="photos/DSCN6259.JPG" alt="Photo 1">
-        <img src="photos/IMG_5997.JPG" alt="Photo 2">
-    </div>
-    
-    
-    <div class="row">
-        <img src="photos/DSCN4057 Copy Copy.JPG" alt="Photo 3">
-    </div>
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: normal;
+}
 
-  </main>
+/* TOGGLE BUTTON */
+.toggle-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-  </body>
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* CAROUSEL CONTAINER */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  background: black;
+  padding: 10px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+}
+
+.carousel-track img {
+  height: 200px;
+  object-fit: cover;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+/* INVERTED MODE CLASS */
+.inverted img {
+  filter: invert(0.8) sepia(1) contrast(0.8) brightness(0.9) saturate(1.2);
+}
+
+.inverted img:hover {
+  transform: scale(1.03);
+  filter: invert(0.8) sepia(0.9) contrast(0.8) brightness(1) saturate(1.2);
+}
+
+/* NORMAL MODE HOVER */
+.carousel-track img:hover {
+  transform: scale(1.03);
+}
+
+/* ANIMATIONS */
+.scroll-left {
+  animation: scrollLeft 18s linear infinite;
+}
+
+.scroll-right {
+  animation: scrollRight 18s linear infinite;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>hi im linda. i like taking pictures</h1>
+</div>
+
+<!-- TOGGLE BUTTON -->
+<div class="toggle-container">
+  <button onclick="toggleInverted()">Toggle Inverted Mode</button>
+</div>
+
+<!-- FIRST ROW - SCROLL LEFT -->
+<div class="carousel-container">
+  <div class="carousel-track scroll-left inverted" id="row1">
+
+    <img src="photos\DSCN4057 Copy Copy.JPG" onclick="openPopup(this)">
+    <img src="photos\DSCN5100.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_5997.JPG" onclick="openPopup(this)">
+
+    <!-- duplicates for seamless loop -->
+    <img src="photos\DSCN4057 Copy Copy.JPG" onclick="openPopup(this)">
+    <img src="photos\DSCN5100.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_5997.JPG" onclick="openPopup(this)">
+
+  </div>
+</div>
+
+<!-- SECOND ROW - SCROLL RIGHT -->
+<div class="carousel-container">
+  <div class="carousel-track scroll-right inverted" id="row2">
+
+    <img src="photos\DSCN5303~3.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_3899 Copy.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_6046 Copy.JPG" onclick="openPopup(this)">
+
+    <!-- duplicates for seamless loop -->
+    <img src="photos\DSCN5303~3.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_3899 Copy.JPG" onclick="openPopup(this)">
+    <img src="photos\IMG_6046 Copy.JPG" onclick="openPopup(this)">
+
+  </div>
+</div>
+
+<!-- IMAGE POPUP -->
+<div class="popup" id="popup" onclick="closePopup()">
+  <img id="popupImage">
+</div>
+
+<script>
+
+function toggleInverted() {
+  document.getElementById("row1").classList.toggle("inverted");
+  document.getElementById("row2").classList.toggle("inverted");
+}
+
+function openPopup(img) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("popupImage").src = img.src;
+
+  let row = img.parentElement;
+  row.style.animationPlayState = "paused";
+  document.getElementById("popup").dataset.pausedRow = row.id;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+
+  let pausedRowId = document.getElementById("popup").dataset.pausedRow;
+
+  if (pausedRowId) {
+    document.getElementById(pausedRowId).style.animationPlayState = "running";
+  }
+}
+
+</script>
+
+</body>
 </html>
