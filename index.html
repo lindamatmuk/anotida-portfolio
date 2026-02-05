@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <title>Linda's Gallery</title>
+
 
 <style>
 body {
@@ -12,23 +14,26 @@ body {
   background: #f5f5f5;
 }
 
-/* HEADER */
-.header {
+.header{
   text-align: center;
-  padding: 60px 20px 30px 20px;
-  background: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, cursive;
+  font-size: large;
+  background-color: #f5f5f5;
+  padding: 20px;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: normal;
+.tabs{
+  padding: 20px;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* TOGGLE BUTTON */
 .toggle-container {
-  text-align: center;
+  text-align: left;
+  margin-left: 10px;
   margin-bottom: 30px;
+  padding: 10px;
 }
 
 button {
@@ -145,15 +150,24 @@ button {
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>hi im linda. i like taking pictures</h1>
-</div>
-
-<!-- TOGGLE BUTTON -->
 <div class="toggle-container">
   <button onclick="toggleInverted()">touch me!</button>
 </div>
+
+<div class="header">
+  <h1>Linda Anotida Gallery</h1>
+</div>
+
+<div class="containter">
+  <div class="row tabs">
+    <div class="col-md-4">CAYMAN</div>
+    <div class="col-md-4">NYC</div>
+    <div class="col-md-4">TRAVELS</div>
+  </div>
+</div>
+
+<!-- TOGGLE BUTTON -->
+
 
 <!-- FIRST ROW - SCROLL LEFT -->
 <div class="carousel-container">
