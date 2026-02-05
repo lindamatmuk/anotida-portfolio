@@ -112,11 +112,28 @@ body {
 
 <script>
 $(document).ready(function() {
-  $("#gallery").justifiedGallery({
-    rowHeight: 380,
-    margins: 100,
-    lastRow: 'justify',
-    captions: false
+  function initGallery() {
+    let rowHeight = 350; // default for desktop
+    let margins = 100;   // keep 100 for desktop
+
+    if (window.innerWidth <= 800) { // mobile
+      rowHeight = 250; // slightly smaller row height for better fit
+      margins = 70;    // smaller gaps on mobile
+    }
+
+    $("#gallery").justifiedGallery('destroy'); // remove previous instance
+    $("#gallery").justifiedGallery({
+      rowHeight: rowHeight,
+      margins: margins,
+      lastRow: 'justify',
+      captions: false
+    });
+  }
+
+  initGallery(); // initialize on page load
+
+  $(window).resize(function() {
+    initGallery(); // reinitialize on resize
   });
 
   const lightbox = GLightbox({
