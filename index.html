@@ -75,8 +75,8 @@ button {
 
 .inverted img:hover {
   transform: scale(1.03);
-  filter: invert(0.8) sepia(0.9) contrast(0.8) brightness(1) saturate(1.2);
-}
+  filter: invert(0.8) sepia(0.9) contrast(0.8) brightness(1.1) saturate(1.2);
+}1
 
 /* NORMAL MODE HOVER */
 .carousel-track img:hover {
@@ -155,6 +155,36 @@ button {
   font-weight: bold;
 }
 
+/* DARK MODE */
+body.dark-mode {
+  background-color: #483c34; /* very dark brown */
+  color: #FDF6E3; /* warm off-white */
+}
+
+body.dark-mode .header {
+  background-color: #483c34;
+  color: #FDF6E3;
+}
+
+body.dark-mode .tabs a {
+  color: #FDF6E3;
+}
+
+body.dark-mode .tabs a:hover {
+  font-weight: bold;
+  color: #fffcfa; /* lighter off-white for hover */
+}
+
+body.dark-mode button {
+  background-color: #FDF6E3; /* dark brown button */
+  color: #483c34;
+}
+
+body.dark-mode .carousel-container {
+  background-color: #151210; /* slightly lighter dark brown */
+}
+
+
 
 </style>
 </head>
@@ -165,7 +195,7 @@ button {
 </div>
 
 <div class="header">
-  <h1>Linda Anotida Gallery</h1>
+  <h1>linda anotida's gallery</h1>
 </div>
 
 <div class="container">
@@ -238,6 +268,7 @@ button {
 <script>
 
 function toggleInverted() {
+  document.body.classList.toggle("dark-mode");
   document.getElementById("row1").classList.toggle("inverted");
   document.getElementById("row2").classList.toggle("inverted");
 }
