@@ -39,6 +39,23 @@ body {
   max-width: 100%;
 }
 
+#gallery a {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+#gallery.hidden a {
+  transform: translate(-200px, 200px) rotate(-8deg);
+  opacity: 0;
+}
+
+.photo:nth-child(1) { transition-delay: 0ms; }
+.photo:nth-child(2) { transition-delay: 40ms; }
+.photo:nth-child(3) { transition-delay: 80ms; }
+.photo:nth-child(4) { transition-delay: 120ms; }
+.photo:nth-child(5) { transition-delay: 160ms; }
+
+
+
 .back-container {
   text-align: center;
   margin-bottom: 15px;
@@ -50,6 +67,30 @@ body {
   color: white;
   padding: 10px 16px;
 }
+
+.photo {
+  cursor: pointer;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.photo.active {
+  transform: scale(1.6);
+  z-index: 5;
+}
+
+.photo.hidden {
+  transform: translate(-300px, 300px) rotate(-12deg) scale(0.8);
+  opacity: 0;
+}
+
+#caption {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  max-width: 600px;
+}
+
 </style>
 </head>
 
@@ -71,35 +112,118 @@ body {
 
 <div id="gallery">
 
-  <a href="000074730013.jpg" class="glightbox" data-title="Brendan and Gina"><img src="000074730013.jpg" alt=""></a>
-  <a href="000074730023 (1) Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="000074730023 (1) Copy.JPG" alt=""></a>
-  <a href="DSCN0281.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN0281.JPG" alt=""></a>
-  <a href="DSCN0957~2 Copy.JPG"class="glightbox" data-title="Cayman Beach"><img src="DSCN0957~2 Copy.JPG" alt=""></a>
-  <a href="DSCN2987~2.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN2987~2.JPG" alt=""></a>
-  <a href="DSCN3784.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN3784.JPG" alt=""></a>
-  <a href="DSCN3957.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN3957.JPG" alt=""></a>
-  <a href="DSCN4057 Copy Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN4057 Copy Copy.JPG" alt=""></a>
-  <a href="DSCN4911~2 Copy Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN4911~2 Copy Copy.JPG" alt=""></a>
-  <a href="DSCN5100.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN5100.JPG" alt=""></a>
-  <a href="DSCN5795_Original Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN5795_Original Copy.JPG" alt=""></a>
-  <a href="DSCN7796~2.JPG" class="glightbox" data-title="Cayman Beach"><img src="DSCN7796~2.JPG" alt=""></a>
-  <a href="IMG_4803.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_4803.JPG" alt=""></a>
-  <a href="IMG_4995.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_4995.JPG" alt=""></a>
-  <a href="IMG_5680.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_5680.JPG" alt=""></a>
-  <a href="IMG_5997.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_5997.JPG" alt=""></a>
-  <a href="IMG_6013.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6013.JPG" alt=""></a>
-  <a href="IMG_6046 Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6046 Copy.JPG" alt=""></a>
-  <a href="IMG_6048.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6048.JPG" alt=""></a>
-  <a href="IMG_6050.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6050.JPG" alt=""></a>
-  <a href="IMG_6085 Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6085 Copy.JPG" alt=""></a>
-  <a href="IMG_6492 Copy.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6492 Copy.JPG" alt=""></a>
-  <a href="PXL_20230723_235402597~2.jpg" class="glightbox" data-title="Cayman Beach"><img src="PXL_20230723_235402597~2.jpg" alt=""></a>
-  <a href="PXL_20250724_201205586~2.jpg" class="glightbox" data-title="Cayman Beach"><img src="PXL_20250724_201205586~2.jpg" alt=""></a>
-  <a href="PXL_20250817_234807326.jpg" class="glightbox" data-title="Cayman Beach"><img src="PXL_20250817_234807326.jpg" alt=""></a>
-  <a href="IMG_6030.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6030.JPG" alt=""></a>
-  <a href="IMG_6103.JPG" class="glightbox" data-title="Cayman Beach"><img src="IMG_6103.JPG" alt=""></a>
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="000074730013.jpg">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="000074730023 (1) Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN0281.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN0957~2 Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN2987~2.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN3784.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN3957.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN4057 Copy Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN4911~2 Copy Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN5100.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN5795_Original Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="DSCN7796~2.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_4803.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_4995.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_5680.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_5997.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6013.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6046 Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6048.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6050.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6085 Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6492 Copy.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="PXL_20230723_235402597~2.jpg">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="PXL_20250724_201205586~2.jpg">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="PXL_20250817_234807326.jpg">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6030.JPG">
+  </div>
+
+  <div class="photo" data-caption="Cayman Beach">
+    <img src="IMG_6103.JPG">
+  </div>
 
 </div>
+
+<div id="caption"></div>
+
 
 <script>
 $(document).ready(function() {
@@ -127,15 +251,50 @@ $(document).ready(function() {
     initGallery(); // reinitialize on resize
   });
 
-  const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-    zoomable: true
-  });
+
+
 });
 
 </script>
+<script>
+const photos = document.querySelectorAll(".photo");
+const caption = document.getElementById("caption");
+
+photos.forEach(photo => {
+  photo.addEventListener("click", () => {
+
+    // if already active → reset
+    if (photo.classList.contains("active")) {
+      photo.classList.remove("active");
+      photos.forEach(p => p.classList.remove("hidden"));
+      caption.textContent = "";
+      return;
+    }
+
+    // activate clicked
+    photos.forEach(p => {
+      p.classList.remove("active");
+      p.classList.add("hidden");
+    });
+
+    photo.classList.remove("hidden");
+    photo.classList.add("active");
+    caption.textContent = photo.dataset.caption;
+  });
+});
+
+// keyboard
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    photos.forEach(p => {
+      p.classList.remove("active");
+      p.classList.remove("hidden");
+    });
+    caption.textContent = "";
+  }
+});
+</script>
+
 
 
 
